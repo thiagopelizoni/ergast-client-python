@@ -2,7 +2,11 @@
 
 This is a simple client for [Ergast Developer API](http://ergast.com/mrd/).
 
+# Trying out
 
+There's a list below that contains all options available to use this library.
+
+There'll be the same method be invoked using others params, in order to show you other ways to use it.
 
 # Drivers
 
@@ -36,6 +40,19 @@ constructor.constructors(season=2019, round=1)
 
 constructor.find("williams")
 constructor.find("ferrari")
+```
+
+# Standings
+
+```
+from ergast import Standings
+
+standings = Standings()
+standings = Standings(season=2019)
+standings = Standings(season="current")
+
+standings.drivers()
+standings.constructors()
 ```
 
 # Races

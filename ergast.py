@@ -74,18 +74,18 @@ class Race():
     def results(self):
         return [self.result(race["round"]) for race in self.races()]
 
-class Season():
+class Standings():
     def __init__(self, season="current"):
         self.season = season
 
-    def driver_standings(self):
+    def drivers(self):
         url = "http://ergast.com/api/f1/{}/driverStandings.json".format(self.season)
         response = requests.get(url)
         if response.status_code != 200:
             return False
         return response.json()["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"]
 
-    def constructor_standings(self):
+    def constructors(self):
         url = "http://ergast.com/api/f1/{}/constructorStandings.json".format(self.season)
         response = requests.get(url)
         if response.status_code != 200:
