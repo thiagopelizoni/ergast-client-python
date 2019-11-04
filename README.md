@@ -42,6 +42,20 @@ constructor.find("williams")
 constructor.find("ferrari")
 ```
 
+# Circuits
+
+```
+from ergast import Circuit
+
+circuit = Circuit()
+
+circuit.circuits()
+circuit.circuits(season=2019)
+circuit.circuits(season=2019, round=1)
+
+circuit.find("monaco")
+```
+
 # Standings
 
 ```

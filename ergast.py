@@ -47,6 +47,29 @@ class Constructor():
             return result[0]
         return {}
 
+# http://ergast.com/mrd/methods/circuits
+class Circuit():
+    def circuits(self, season=None, round=None):
+        url = "http://ergast.com/api/f1/circuits.json?limit=1000"
+        if season:
+            url = "http://ergast.com/api/f1/{}/circuits.json?limit=1000".format(season)
+        if season and round:
+            url = "http://ergast.com/api/f1/{}/{}/circuits.json?limit=1000".format(season, round)
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+        return response.json()["MRData"]["CircuitTable"]["Circuits"]
+
+    def find(self, circuit_id):
+        url = "http://ergast.com/api/f1/circuits/{}.json".format(circuit_id)
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+        result = response.json()["MRData"]["CircuitTable"]["Circuits"]
+        if result != []:
+            return result[0]
+        return {}
+
 class Race():
     def __init__(self, season="current"):
         self.season = season
