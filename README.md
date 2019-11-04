@@ -2,6 +2,10 @@
 
 This is a simple client for [Ergast Developer API](http://ergast.com/mrd/).
 
+Because of Ergast API is public, sometimes happens timeouts.
+
+The delay for the informations sometimes is great after the finish of a racing for example.
+
 # Trying out
 
 There's a list below that contains all options available to use this library.
