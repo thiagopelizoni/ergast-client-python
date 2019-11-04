@@ -10,7 +10,7 @@ The delay for the informations sometimes is great after the finish of a racing f
 
 There's a list below that contains all options available to use this library.
 
-There'll be the same method be invoked using others params, in order to show you other ways to use it.
+There'll be a same method be invoked using others params just in order to show you another way to use it.
 
 # Drivers
 
