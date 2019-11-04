@@ -1,8 +1,8 @@
 import argparse
 import requests
 
+# http://ergast.com/mrd/methods/drivers
 class Driver():
-    # http://ergast.com/mrd/methods/drivers
     def drivers(self, season=None, round=None):
         url = "http://ergast.com/api/f1/drivers.json?limit=1000"
         if season:
@@ -14,12 +14,38 @@ class Driver():
             return False
         return response.json()["MRData"]["DriverTable"]["Drivers"]
 
-    def driver(self, driver_id):
+    def find(self, driver_id):
         url = "http://ergast.com/api/f1/drivers/{}.json".format(driver_id)
         response = requests.get(url)
         if response.status_code != 200:
             return False
-        return response.json()["MRData"]["DriverTable"]["Drivers"][0]
+        result = response.json()["MRData"]["DriverTable"]["Drivers"]
+        if result != []:
+            return result[0]
+        return {}
+
+# http://ergast.com/mrd/methods/constructors
+class Constructor():
+    def constructors(self, season=None, round=None):
+        url = "http://ergast.com/api/f1/constructors.json?limit=1000"
+        if season:
+            url = "http://ergast.com/api/f1/{}/constructors.json?limit=1000".format(season)
+        if season and round:
+            url = "http://ergast.com/api/f1/{}/{}/constructors.json?limit=1000".format(season, round)
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+        return response.json()["MRData"]["ConstructorTable"]["Constructors"]
+
+    def find(self, constructor_id):
+        url = "http://ergast.com/api/f1/constructors/{}.json".format(constructor_id)
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+        result = response.json()["MRData"]["ConstructorTable"]["Constructors"]
+        if result != []:
+            return result[0]
+        return {}
 
 class Race():
     def __init__(self, season="current"):
@@ -65,9 +91,3 @@ class Season():
         if response.status_code != 200:
             return False
         return response.json()["MRData"]["StandingsTable"]["StandingsLists"][0]["ConstructorStandings"]
-
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
