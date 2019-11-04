@@ -21,7 +21,7 @@ class Driver():
             return False
         return response.json()["MRData"]["DriverTable"]["Drivers"][0]
 
-class Ergast():
+class Race():
     def __init__(self, season="current"):
         self.season = season
 
@@ -34,7 +34,7 @@ class Ergast():
         return response.json()["MRData"]["RaceTable"]["Races"]
 
     # http://ergast.com/mrd/methods/results
-    def results(self, round):
+    def result(self, round):
         url = "http://ergast.com/api/f1/{}/{}/results.json?limit=100".format(self.season, round)
         response = requests.get(url)
         if response.status_code != 200:
@@ -42,6 +42,15 @@ class Ergast():
         result = response.json()["MRData"]["RaceTable"]["Races"]
         if result != []:
             return result[0]["Results"]
+        return []
+
+    # All results for all races
+    def results(self):
+        return [self.result(race["round"]) for race in self.races()]
+
+class Season():
+    def __init__(self, season="current"):
+        self.season = season
 
     def driver_standings(self):
         url = "http://ergast.com/api/f1/{}/driverStandings.json".format(self.season)

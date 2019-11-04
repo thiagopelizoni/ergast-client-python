@@ -1,6 +1,6 @@
 # Formula 1 open API client
 
-This is a simple client for [Ergast Developer API ](http://ergast.com/mrd/).
+This is a simple client for [Ergast Developer API](http://ergast.com/mrd/).
 
 
 
@@ -19,4 +19,16 @@ driver.drivers(season=2019, round=1)
 
 driver.driver("hamilton")
 driver.driver("senna")
+```
+
+# Race
+
+```
+from ergast import Race()
+
+race = Race()
+
+race.races()
+race.result(round=1)
+race.results() # All results for all races
 ```
