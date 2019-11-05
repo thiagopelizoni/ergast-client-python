@@ -96,6 +96,7 @@ class Race():
     def results(self):
         return [self.result(race["round"]) for race in self.races()]
 
+# http://ergast.com/mrd/methods/standings
 class Standings():
     def __init__(self, season="current"):
         self.season = season

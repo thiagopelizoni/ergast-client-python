@@ -78,9 +78,10 @@ standings.constructors()
 ```
 from ergast import Race()
 
-race = Race()
+race = Race() # set the season as actual
+race = Race(season=2019)
 
-race.races()
-race.result(round=1)
+race.races() # All races from a specific season
+race.result(round=1) # Results for the round 1
 race.results() # All results for all races
 ```
