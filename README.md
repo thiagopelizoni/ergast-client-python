@@ -67,7 +67,6 @@ from ergast import Standings
 
 standings = Standings()
 standings = Standings(season=2019)
-standings = Standings(season="current")
 
 standings.drivers()
 standings.constructors()
@@ -83,5 +82,5 @@ race = Race(season=2019)
 
 race.races() # All races from a specific season
 race.result(round=1) # Results for the round 1
-race.results() # All results for all races
+race.results() # All results for all races given a season
 ```

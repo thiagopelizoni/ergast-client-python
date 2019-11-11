@@ -69,10 +69,11 @@ class Circuit():
             return result[0]
         return {}
 
-class Race():
+class Ergast():
     def __init__(self, season="current"):
         self.season = season
 
+class Race(Ergast):
     # http://ergast.com/mrd/methods/schedule
     def races(self):
         url = "http://ergast.com/api/f1/{}.json".format(self.season)
@@ -97,10 +98,7 @@ class Race():
         return [self.result(race["round"]) for race in self.races()]
 
 # http://ergast.com/mrd/methods/standings
-class Standings():
-    def __init__(self, season="current"):
-        self.season = season
-
+class Standings(Ergast):
     def drivers(self):
         url = "http://ergast.com/api/f1/{}/driverStandings.json".format(self.season)
         response = requests.get(url)
